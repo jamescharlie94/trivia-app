@@ -6,11 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import Home from "./pages/Home";
+
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/home" element={<h1>home screen</h1>} />
+        <Route path="/home" element={<Home />} />
         <Route path="/qa" element={<h1>qa screen</h1>} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Switch>
