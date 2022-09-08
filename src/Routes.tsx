@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   BrowserRouter,
   Routes as Switch,
@@ -7,15 +7,19 @@ import {
 } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Quiz from "./pages/Quiz";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/home" element={<Home />} />
-        <Route path="/qa" element={<h1>qa screen</h1>} />
-        <Route path="*" element={<Navigate to="/home" replace />} />
-      </Switch>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Switch>
+          <Route path="/home" element={<Home />} />
+          <Route path="/qa" element={<Quiz />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
+        </Switch>
+      </Suspense>
     </BrowserRouter>
   );
 };
